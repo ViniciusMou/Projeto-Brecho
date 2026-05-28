@@ -1,0 +1,16 @@
+name: CI - Projeto Brecho
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Rodar validação
+        run: echo "CI rodando com sucesso no Projeto Brecho"
