@@ -1,3 +1,6 @@
+# produto.html COMPLETO (corrigido)
+
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -23,8 +26,6 @@
 
 <body>
 
-    <!-- HEADER -->
-
     <header>
 
         <div class="header-left">
@@ -38,8 +39,6 @@
 
         </div>
 
-        <!-- LOGIN -->
-
         <a href="identificacao.html"
             id="login-link"
             class="btn-login">
@@ -49,8 +48,6 @@
             <span>Entrar / Cadastrar</span>
 
         </a>
-
-        <!-- USUÁRIO -->
 
         <div id="user-logged"
             style="display:none;">
@@ -66,24 +63,18 @@
 
         </div>
 
-        <!-- CARRINHO -->
-
         <a href="carrinho.html"
             class="btn-ver-carrinho">
 
             <i class="fas fa-shopping-cart"></i>
 
             <span id="cart-item-count">
-
                 0
-
             </span>
 
         </a>
 
     </header>
-
-    <!-- PRODUTO -->
 
     <main class="produto-container">
 
@@ -95,7 +86,6 @@
 
             <div class="miniaturas"
                 id="miniaturas-container">
-
             </div>
 
         </div>
@@ -103,124 +93,54 @@
         <div class="produto-info">
 
             <span class="produto-tag">
-
                 Nova coleção
-
             </span>
 
             <h1 id="produto-nome">
-
                 Produto
-
             </h1>
 
             <div class="preco"
                 id="produto-preco">
-
                 R$ 0,00
-
             </div>
 
             <p class="descricao"
                 id="produto-descricao">
-
                 Descrição do produto.
-
             </p>
-
-            <!-- INFO BOX -->
 
             <div class="info-box">
 
                 <div class="info-item">
-
                     <i class="fas fa-truck"></i>
-
                     Frete rápido para todo Brasil
-
                 </div>
 
                 <div class="info-item">
-
                     <i class="fas fa-shield-alt"></i>
-
                     Compra 100% segura
-
                 </div>
 
                 <div class="info-item">
-
                     <i class="fas fa-credit-card"></i>
-
                     Parcelamento em até 12x
-
                 </div>
 
             </div>
 
-            <!-- TAMANHO -->
+            <h3>Tamanho</h3>
 
-            <h3>
+            <select id="tamanho"></select>
 
-                Tamanho
+            <h3>Cor</h3>
 
-            </h3>
-
-            <select id="tamanho">
-
-                <option value="P">P</option>
-
-                <option value="M">M</option>
-
-                <option value="G">G</option>
-
-                <option value="GG">GG</option>
-
-            </select>
-
-            <!-- COR -->
-
-            <h3>
-
-                Cor
-
-            </h3>
-
-            <select id="cor">
-
-                <option value="Preto">
-
-                    Preto
-
-                </option>
-
-                <option value="Branco">
-
-                    Branco
-
-                </option>
-
-                <option value="Bege">
-
-                    Bege
-
-                </option>
-
-                <option value="Azul">
-
-                    Azul
-
-                </option>
-
-            </select>
-
-            <!-- BOTÃO -->
+            <select id="cor"></select>
 
             <button class="btn-carrinho"
                 onclick="adicionarAoCarrinho()">
 
                 <i class="fas fa-shopping-cart"></i>
-
                 Adicionar ao carrinho
 
             </button>
@@ -231,215 +151,307 @@
 
     <script>
 
-        // =========================
-        // PRODUTOS
-        // =========================
+       const produtos = {
 
-        const produtos = {
+    1: {
 
-            1: {
+        nome: "Nike Branco",
 
-                nome:
-                    "Nike Branco",
+        preco: 299.90,
 
-                preco:
-                    299.90,
+        descricao:
+            "Tênis premium moderno com acabamento sofisticado e máximo conforto.",
 
-                descricao:
-                    "Tênis premium moderno com acabamento sofisticado e máximo conforto.",
+        imagens: [
 
-                imagens: [
+            "./ROUPAS/nike branco.jpeg"
 
-                    "./ROUPAS/nike branco.jpeg"
+        ],
 
-                ]
+        tamanhos: [
 
-            },
+            "38"
 
-            2: {
+        ],
 
-                nome:
-                    "Camiseta Preta",
+        cores: [
 
-                preco:
-                    119.90,
+            "Branco"
 
-                descricao:
-                    "Camiseta minimalista premium para composições elegantes.",
+        ]
 
-                imagens: [
+    },
 
-                    "./ROUPAS/camiseta preta.jpeg"
+    2: {
 
-                ]
+        nome: "Camiseta Preta",
 
-            },
+        preco: 119.90,
 
-            3: {
+        descricao:
+            "Camiseta minimalista premium para composições elegantes.",
 
-                nome:
-                    "Calça Preta",
+        imagens: [
 
-                preco:
-                    189.90,
+            "./ROUPAS/camiseta preta.jpeg"
 
-                descricao:
-                    "Calça moderna e sofisticada para qualquer ocasião.",
+        ],
 
-                imagens: [
+        tamanhos: [
 
-                    "./ROUPAS/calca preta 1.jpeg",
-                    "./ROUPAS/calca preta 2.jpg",
-                    "./ROUPAS/calca preta 3.jpg"
+            "M"
 
-                ]
+        ],
 
-            },
+        cores: [
 
-            4: {
+            "Preto"
 
-                nome:
-                    "Calça Bege",
+        ]
 
-                preco:
-                    189.90,
+    },
 
-                descricao:
-                    "Estilo refinado e conforto absoluto.",
+    3: {
 
-                imagens: [
+        nome: "Calça Preta",
 
-                    "./ROUPAS/calca bege 1.jpeg",
-                    "./ROUPAS/calca bege 2.jpg",
-                    "./ROUPAS/calca bege 3.jpg"
+        preco: 189.90,
 
-                ]
+        descricao:
+            "Calça moderna e sofisticada para qualquer ocasião.",
 
-            },
+        imagens: [
 
-            5: {
+            "./ROUPAS/calca preta 1.jpeg",
+            "./ROUPAS/calca preta 2.jpg",
+            "./ROUPAS/calca preta 3.jpg"
 
-                nome:
-                    "Nike Azul",
+        ],
 
-                preco:
-                    329.90,
+        tamanhos: [
 
-                descricao:
-                    "Tênis premium moderno com visual exclusivo.",
+            "42"
 
-                imagens: [
+        ],
 
-                    "./ROUPAS/nike azul.jpeg"
+        cores: [
 
-                ]
+            "Preto"
 
-            },
+        ]
 
-            6: {
+    },
 
-                nome:
-                    "Calça Jeans Escuro",
+    4: {
 
-                preco:
-                    219.90,
+        nome: "Calça Bege",
 
-                descricao:
-                    "Calça jeans escura premium moderna.",
+        preco: 189.90,
 
-                imagens: [
+        descricao:
+            "Estilo refinado e conforto absoluto.",
 
-                    "./ROUPAS/calca jeans escuro 1.jpg",
-                    "./ROUPAS/calca jeans escuro 2.jpg",
-                    "./ROUPAS/calca jeans escuro 3.jpg"
+        imagens: [
 
-                ]
+            "./ROUPAS/calca bege 1.jpeg",
+            "./ROUPAS/calca bege 2.jpg",
+            "./ROUPAS/calca bege 3.jpg"
 
-            },
+        ],
 
-            7: {
+        tamanhos: [
 
-                nome:
-                    "Calça Jeans Claro",
+            "42"
 
-                preco:
-                    219.90,
+        ],
 
-                descricao:
-                    "Calça jeans clara estilosa e confortável.",
+        cores: [
 
-                imagens: [
+            "Bege"
 
-                    "./ROUPAS/calca jeans claro 1.jpg",
-                    "./ROUPAS/calca jeans claro 2.jpg",
-                    "./ROUPAS/calca jeans claro 3.jpg"
+        ]
 
-                ]
+    },
 
-            },
+    5: {
 
-            8: {
+        nome: "Nike Azul",
 
-                nome:
-                    "Boné Logo Vermelha",
+        preco: 329.90,
 
-                preco:
-                    89.90,
+        descricao:
+            "Tênis premium moderno com visual exclusivo.",
 
-                descricao:
-                    "Boné premium moderno com logo vermelha e acabamento sofisticado.",
+        imagens: [
 
-                imagens: [
+            "./ROUPAS/nike azul.jpeg"
 
-                    "./ROUPAS/bone 1.jpeg"
+        ],
 
-                ]
+        tamanhos: [
 
-            },
+            "40"
 
-            9: {
+        ],
 
-                nome:
-                    "Boné Logo K",
+        cores: [
 
-                preco:
-                    89.90,
+            "Azul"
 
-                descricao:
-                    "Boné estiloso com logo K e visual minimalista.",
+        ]
 
-                imagens: [
+    },
 
-                    "./ROUPAS/bone 2.jpeg"
+    6: {
 
-                ]
+        nome: "Calça Jeans Escuro",
 
-            },
+        preco: 219.90,
 
-            10: {
+        descricao:
+            "Calça jeans escura premium moderna.",
 
-                nome:
-                    "Boné Caveira",
+        imagens: [
 
-                preco:
-                    89.90,
+            "./ROUPAS/calca jeans escuro 1.jpg",
+            "./ROUPAS/calca jeans escuro 2.jpg",
+            "./ROUPAS/calca jeans escuro 3.jpg"
 
-                descricao:
-                    "Boné moderno com estampa de caveira e design premium.",
+        ],
 
-                imagens: [
+        tamanhos: [
 
-                    "./ROUPAS/bone 3.jpeg"
+            "42"
 
-                ]
+        ],
 
-            }
+        cores: [
 
-        };
+            "Jeans Escuro"
 
-        // =========================
-        // PEGAR ID
-        // =========================
+        ]
+
+    },
+
+    7: {
+
+        nome: "Calça Jeans Claro",
+
+        preco: 219.90,
+
+        descricao:
+            "Calça jeans clara estilosa e confortável.",
+
+        imagens: [
+
+            "./ROUPAS/calca jeans claro 1.jpg",
+            "./ROUPAS/calca jeans claro 2.jpg",
+            "./ROUPAS/calca jeans claro 3.jpg"
+
+        ],
+
+        tamanhos: [
+
+            "40"
+
+        ],
+
+        cores: [
+
+            "Jeans Claro"
+
+        ]
+
+    },
+
+    8: {
+
+        nome: "Boné Logo Vermelha",
+
+        preco: 89.90,
+
+        descricao:
+            "Boné premium moderno com logo vermelha e acabamento sofisticado.",
+
+        imagens: [
+
+            "./ROUPAS/bone 1.jpeg"
+
+        ],
+
+        tamanhos: [
+
+            "Único"
+
+        ],
+
+        cores: [
+
+            "Preto"
+
+        ]
+
+    },
+
+    9: {
+
+        nome: "Boné Logo K",
+
+        preco: 89.90,
+
+        descricao:
+            "Boné estiloso com logo K e visual minimalista.",
+
+        imagens: [
+
+            "./ROUPAS/bone 2.jpeg"
+
+        ],
+
+        tamanhos: [
+
+            "Único"
+
+        ],
+
+        cores: [
+
+            "Branco"
+
+        ]
+
+    },
+
+    10: {
+
+        nome: "Boné Caveira",
+
+        preco: 89.90,
+
+        descricao:
+            "Boné moderno com estampa de caveira e design premium.",
+
+        imagens: [
+
+            "./ROUPAS/bone 3.jpeg"
+
+        ],
+
+        tamanhos: [
+
+            "Único"
+
+        ],
+
+        cores: [
+
+            "Preto"
+
+        ]
+
+    }
+
+};
 
         const params =
             new URLSearchParams(
@@ -451,10 +463,6 @@
 
         const produto =
             produtos[id];
-
-        // =========================
-        // CARREGAR PRODUTO
-        // =========================
 
         function carregarProduto() {
 
@@ -473,6 +481,48 @@
             ).innerText =
                 produto.descricao;
 
+            const tamanhoSelect =
+                document.getElementById(
+                    "tamanho"
+                );
+
+            tamanhoSelect.innerHTML = "";
+
+            produto.tamanhos.forEach(
+                tamanho => {
+
+                    tamanhoSelect.innerHTML += `
+
+                        <option value="${tamanho}">
+                            ${tamanho}
+                        </option>
+
+                    `;
+
+                }
+            );
+
+            const corSelect =
+                document.getElementById(
+                    "cor"
+                );
+
+            corSelect.innerHTML = "";
+
+            produto.cores.forEach(
+                cor => {
+
+                    corSelect.innerHTML += `
+
+                        <option value="${cor}">
+                            ${cor}
+                        </option>
+
+                    `;
+
+                }
+            );
+
             const imagemPrincipal =
                 document.getElementById(
                     "produto-img"
@@ -486,8 +536,7 @@
                     "miniaturas-container"
                 );
 
-            miniaturasContainer.innerHTML =
-                "";
+            miniaturasContainer.innerHTML = "";
 
             produto.imagens.forEach(
                 (img, index) => {
@@ -535,105 +584,6 @@
             );
 
         }
-
-        // LOGIN
-
-        function checkLogin() {
-
-            const usuario =
-                localStorage.getItem(
-                    "usuario_nome"
-                );
-
-            const loginLink =
-                document.getElementById(
-                    "login-link"
-                );
-
-            const userLogged =
-                document.getElementById(
-                    "user-logged"
-                );
-
-            const userName =
-                document.getElementById(
-                    "user-name"
-                );
-
-            if(usuario){
-
-                loginLink.style.display =
-                    "none";
-
-                userLogged.style.display =
-                    "flex";
-
-                userName.innerText =
-                    "Olá, " + usuario;
-
-            }else{
-
-                loginLink.style.display =
-                    "flex";
-
-                userLogged.style.display =
-                    "none";
-
-            }
-
-        }
-
-        // LOGOUT
-
-        function logout(){
-
-            localStorage.removeItem(
-                "usuario_nome"
-            );
-
-            localStorage.removeItem(
-                "usuario_email"
-            );
-
-            localStorage.removeItem(
-                "usuario_id"
-            );
-
-            localStorage.removeItem(
-                "usuario_logado"
-            );
-
-            window.location.href =
-                "index.html";
-
-        }
-
-        // CARRINHO
-
-        function updateCartItemCount(){
-
-            const carrinho =
-                JSON.parse(
-                    localStorage.getItem(
-                        "carrinho"
-                    )
-                ) || [];
-
-            const totalItems =
-                carrinho.reduce(
-                    (sum, item) =>
-                        sum + item.quantidade,
-                    0
-                );
-
-            document.getElementById(
-                "cart-item-count"
-            ).innerText =
-                totalItems;
-
-        }
-
-        // ADICIONAR
 
         function adicionarAoCarrinho(){
 
@@ -693,28 +643,20 @@
                 JSON.stringify(carrinho)
             );
 
-            updateCartItemCount();
-
             alert(
                 "Produto adicionado ao carrinho!"
             );
 
         }
 
-        // INIT
-
         window.onload = () => {
 
             carregarProduto();
-
-            checkLogin();
-
-            updateCartItemCount();
 
         };
 
     </script>
 
 </body>
-
 </html>
+```
